@@ -1,12 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Dashboard from './components/Dashboard'
+import Login from './components/Login'
+import Register from './components/Register'
+import Header from './components/Header'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   return (
-    <h1>Start of a Journey</h1>
+    <>
+      <Router>
+        <div className='container'>
+          <Header />
+          <Routes>
+            <Route path='/' element={<Dashboard />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+          </Routes>
+        </div>
+      </Router>
+      <ToastContainer />
+    </>
   )
 }
 
