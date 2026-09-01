@@ -6,6 +6,7 @@ import Header from './components/Header'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import TaskList from './components/TaskList'
+import PrivateRoute from './components/PrivateRoute'
 
 function App() {
   return (
@@ -14,10 +15,18 @@ function App() {
         <div className='container'>
           <Header />
           <Routes>
-            <Route path='/' element={<Dashboard />} />
+            <Route path='/' element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            } />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
-            <Route path='/alltasks' element={<TaskList />} />
+            <Route path='/alltasks' element={
+              <PrivateRoute>
+                <TaskList />
+              </PrivateRoute>
+            } />
           </Routes>
         </div>
       </Router>

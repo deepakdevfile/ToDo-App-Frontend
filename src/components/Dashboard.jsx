@@ -7,12 +7,6 @@ export default function Dashboard(){
     const { user } = useSelector(state => state.auth)
     const navigate = useNavigate()
 
-    useEffect(() => {
-        if(!user){
-            navigate('/login')
-        }
-    }, [user, navigate])
-
     return (
         <>
             <section className='heading'>

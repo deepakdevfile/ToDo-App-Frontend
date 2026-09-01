@@ -72,10 +72,7 @@ export const taskSlice = createSlice({
             .addCase(createTask.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
-                console.log(state.tasks[0])
                 state.tasks.push(action.payload)
-                console.log(action.payload)
-                console.log(state.tasks[state.tasks.length - 1])
             })
             .addCase(createTask.rejected, (state, action) => {
                 state.isLoading = false

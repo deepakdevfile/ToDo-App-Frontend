@@ -10,14 +10,17 @@ const TaskList = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { tasks, isLoading, isError, message } = useSelector(state => state.tasks)
+    const { user } = useSelector(state => state.auth)
 
     useEffect(() => {
         if(isError){
             console.log(message)
         }
+
         dispatch(getTasks())
+
         return () => dispatch(reset())
-    }, [navigate, isError, message, dispatch])
+    }, [isError, message, dispatch])
 
     return (
         isLoading? <Spinner /> : (

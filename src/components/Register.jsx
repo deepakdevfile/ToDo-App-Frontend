@@ -16,6 +16,9 @@ export default function Register(){
     const { user, isLoading, isError, isSuccess, message } = useSelector(state => state.auth)
 
     useEffect(() => {
+        if (message === 'User already Exists'){
+            navigate('/login')
+        }
         if(isError){
             toast.error(message)
         }
