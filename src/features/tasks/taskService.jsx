@@ -2,33 +2,23 @@ import axios from 'axios'
 
 const API_URL = import.meta.env.VITE_API_URL + '/api/tasks/'
 
-const createTask = async (taskData, token) => {
-    const config = {
-        headers: {
-            Authorization: `Bearer ${token}`,
-        }
-    }
-    const response = await axios.post(API_URL, taskData, config)
+const api = axios.create({
+    baseURL: import.meta.env.VITE_API_URL,
+    withCredentials: true,
+})
+
+const createTask = async (taskData) => {
+    const response = await api.post('/api/tasks/', taskData)
     return response.data
 }
 
-const getTasks = async(token) => {
-    const config = {
-        headers: {
-            Authorization: `Bearer ${token}`,
-        }
-    }
-    const response = await axios.get(API_URL, config)
+const getTasks = async() => {
+    const response = await api.get('/api/tasks/')
     return response.data
 }
 
-const deleteTask = async(id, token) => {
-    const config = {
-        headers: {
-            Authorization: `Bearer ${token}`,
-        }
-    }
-    const response = await axios.delete(API_URL + id, config)
+const deleteTask = async(id) => {
+    const response = await api.delete('/api/tasks/' + id)
     return response.data
 }
 

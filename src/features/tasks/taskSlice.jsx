@@ -13,8 +13,7 @@ export const createTask = createAsyncThunk(
     'tasks/create',
     async(taskData, thunkAPI) => {
         try{
-            const token = thunkAPI.getState().auth.user.token
-            return await taskService.createTask(taskData, token)
+            return await taskService.createTask(taskData)
         } catch(error){
             const message =
                 (error.response && error.response.data && error.response.data.message)
@@ -29,9 +28,7 @@ export const getTasks = createAsyncThunk(
     'tasks/getAll',
     async(_, thunkAPI) => {
         try{
-            const token = thunkAPI.getState().auth.user.token
-            const data = await taskService.getTasks(token)
-            return data
+            return await taskService.getTasks()
         } catch(error){
             const message =
                 (error.response && error.response.data && error.response.data.message)
@@ -46,8 +43,7 @@ export const deleteTask = createAsyncThunk(
     'tasks/delete',
     async(id, thunkAPI) => {
         try{
-            const token = thunkAPI.getState().auth.user.token
-            return await taskService.deleteTask(id, token)
+            return await taskService.deleteTask(id)
         } catch(error){
             const message =
                 (error.response && error.response.data && error.response.data.message)
