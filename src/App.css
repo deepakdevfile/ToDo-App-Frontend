@@ -151,6 +151,46 @@ h3 {
   justify-content: center;
 }
 
+.task .edit {
+  position: absolute;
+  top: 10px;
+  right: 40px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  color: #007bff;
+}
+
+.edit-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.edit-form input {
+  position: absolute;
+  top: 10px;
+  right: 40px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  color: #007bff;
+}
+
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  margin: 10px 10px;
+}
+
+.btn-cancel {
+  background-color: #6c757d;
+  margin: 10px 10px;
+}
+
 .btn svg {
   margin-right: 8px;
 }
