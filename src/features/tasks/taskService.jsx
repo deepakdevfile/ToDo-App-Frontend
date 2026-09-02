@@ -22,6 +22,11 @@ const deleteTask = async(id) => {
     return response.data
 }
 
-const taskService = { createTask, getTasks, deleteTask }
+const updateTask = async(id, taskData) => {
+    const response = await api.put('api/tasks/' + id, taskData)
+    return response.data
+}
+
+const taskService = { createTask, getTasks, deleteTask, updateTask }
 
 export default taskService

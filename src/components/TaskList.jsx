@@ -8,19 +8,18 @@ import { useNavigate } from "react-router-dom"
 
 const TaskList = () => {
     const dispatch = useDispatch()
-    const navigate = useNavigate()
     const { tasks, isLoading, isError, message } = useSelector(state => state.tasks)
-    const { user } = useSelector(state => state.auth)
 
     useEffect(() => {
-        if(isError){
+        dispatch(getTasks())
+        return () => dispatch(reset())
+    }, [dispatch])
+
+    useEffect(() => {
+        if (isError) {
             console.log(message)
         }
-
-        dispatch(getTasks())
-
-        return () => dispatch(reset())
-    }, [isError, message, dispatch])
+    }, [isError, message])
 
     return (
         isLoading? <Spinner /> : (
